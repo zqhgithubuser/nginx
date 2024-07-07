@@ -58,6 +58,11 @@ server {
 		limit_req zone=req burst=10;
 	}
 
+	location ~* \.(css|js)$ {
+		expires 1y;
+		add_header Cache-Control "public";
+	}
+
 	location /nginx_status {
 		stub_status on;
 		allow 127.0.0.1;
